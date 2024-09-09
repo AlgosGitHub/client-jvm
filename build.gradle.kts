@@ -85,9 +85,17 @@ tasks {
 }
 
 release {
+    preTagCommitMessage = "[skip ci] prepare release "
+    tagCommitMessage = "[skip ci] create release "
+    newVersionCommitMessage = "[skip ci] prepare for next development iteration"
+
     git {
         requireBranch = "master"
     }
+}
+
+tasks.afterReleaseBuild {
+    dependsOn(tasks.publish)
 }
 
 publishing {
