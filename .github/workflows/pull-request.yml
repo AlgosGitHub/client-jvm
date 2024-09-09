@@ -21,10 +21,10 @@ jobs:
         with:
           java-version: "22"
           distribution: "temurin"
-          cache: "maven"
+          cache: "gradle"
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
 
       - name: Build package
-        run: ./mvnw -U -B verify clean package
-        env:
-          GH_PACKAGES_USER: ${{ secrets.GH_PACKAGES_USER }}
-          GH_PACKAGES_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+        run: ./gradlew build
