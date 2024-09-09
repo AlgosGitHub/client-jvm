@@ -19,6 +19,7 @@ plugins {
     kotlin("jvm") version "2.0.20"
     kotlin("plugin.serialization") version "2.0.20"
     kotlin("kapt") version "2.0.20"
+    id("net.researchgate.release") version "3.0.2"
 }
 
 group = "com.github.polygon-io"
@@ -80,6 +81,12 @@ tasks {
     artifacts {
         add("archives", sourcesJar)
         add("archives", jar)
+    }
+}
+
+release {
+    git {
+        requireBranch = "master"
     }
 }
 
