@@ -88,10 +88,33 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "com.github.polygon-io"
             artifactId = "client-jvm"
-            version = "0.1.0"
+            version = "1.0.0"
             artifact(sourcesJar)
 
             from(components["java"])
+
+            pom {
+                name = "Polygon JVM Client SDK"
+                description = "The official JVM client library SDK, written in Kotlin, for accessing the Polygon REST and WebSocket API."
+                url = "https://github.com/Siege-Tech/client-jvm"
+
+                scm {
+                    connection = "scm:git:https://github.com/Siege-Tech/client-jvm.git"
+                    developerConnection = "scm:git:https://github.com/Siege-Tech/client-jvm.git"
+                    url = "https://github.com/Siege-Tech/client-jvm.git"
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/Siege-Tech/client-jvm")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
         }
     }
 }
