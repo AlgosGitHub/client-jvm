@@ -85,9 +85,9 @@ tasks {
 }
 
 release {
-    preTagCommitMessage = "[skip ci] prepare release "
-    tagCommitMessage = "[skip ci] create release "
-    newVersionCommitMessage = "[skip ci] prepare for next development iteration"
+    preTagCommitMessage = "[ci skip] prepare release "
+    tagCommitMessage = "[ci skip] create release "
+    newVersionCommitMessage = "[ci skip] prepare for next development iteration"
 
     git {
         requireBranch = "master"
